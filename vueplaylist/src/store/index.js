@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    songTitle: "Randon Song",
+    artist: "Randon Artist"
+
+  },
+  mutations: {
+   
+  },
   actions: {},
   getters: {},
 });
