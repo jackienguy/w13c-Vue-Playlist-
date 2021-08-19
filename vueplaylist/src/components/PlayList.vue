@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h2>Playlist</h2>
+        <h2>Playlist:</h2>
+         <button @click="removeFromList(song)">-</button> 
+       
     </div>
 </template>
 
@@ -8,10 +10,14 @@
 
     export default {
         name: "PlayList",
-       
+        computed: {
+            songs() {
+                return this.$store.state.songs;
+            }  
+        },
+        methods: {
+            removeFromList: function(song) {
+                this.$store.commit('removeFromList', song)
+            }
+        }
     }
-</script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -5,7 +5,7 @@
     <SongList/>
     <PlayList/>
   </div>
-</template>
+</template> 
 
 <script>
 

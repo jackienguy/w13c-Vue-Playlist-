@@ -1,23 +1,32 @@
 <template>
     <div>
         <h2>Songs:</h2>
-        <p>Song Title: {{songs}}, Artist: {{artistName}} <button @click="addToPlaylist">+</button> </p>
-        <p>Song Title: {{songs}}, Artist: {{artistName}} <button @click="addToPlaylist">+</button> </p>
-        <p>Song Title: {{songs}}, Artist: {{artistName}} <button @click="addToPlaylist">+</button> </p>
-         
+        <div v-for="track in songs" :key="track">
+            <p>Song Title: {{songs.title}}, Artist: {{songs.artist}} <button @click="addToPlaylist(song)">+</button> </p>
+        </div>
+        <PlayList/>
     </div>
 </template>
 
 <script>
+import PlayList from "./PlayList.vue";
+
     export default {
         name: "SongList",
+        components: {
+            PlayList 
+        },
         computed :{
             songs(){
-                return this.$store.state.songTitle;
-                
+                return this.$store.state.songs;   
+            }
+        },
+        methods: {
+            addToPlaylist: function(song) {
+                this.$store.commit('addToPlaylist', song)
             },
-            artistName(){
-                return this.$store.state.artist;
+            removeFromList: function(song) {
+                this.$store.commit('removeFromList', song)
             }
         }
     }
